@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+        .container{
+            top:10%;
+           width: 500px;
+           height: 500px;
+           background-color: aqua;
+           border-radius: 20px;
+           
+        }
+        h1{
+            text-transform: uppercase;
+        }
+        h2{
+            font-size: 3rem;
+            color:red
+            
+        }
+    
+        p{
+            font-size: 1.5rem;
+            color: blue;
+        }
+        .buttons{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            
+        }
+        button{
+            cursor: pointer;
+            width:70%;
+            font-size: 2rem;
+            padding: 10px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            color:aqua
+        }
+        .increment{
+            background-color: red;
+            margin-bottom:10px;
+        }
+        .increment:hover{
+            color: red;
+            background-color: white;
+        }
+
+        .save{
+            background-color: green;
+            margin-bottom:10px;
+        }
+        .save:hover{
+            color :green;
+            background-color: white;
+        }
+        .clear{
+            background-color: hotpink
+        }
+        .clear:hover{
+            color:hotpink;
+            background-color: white;
+        }
+        .save ::after{
+            content: '-';
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>People counter app</h1>
+        <h2 id="countEl">0</h2>
+    <div class="buttons">
+        <button class="increment">Increment</button>
+        <button class="save" >Save</button>
+        <button class="clear" >Clear</button>
+
+        <p id="saved"></p>
+    </div>
+        
+
+    </div>
+    
+</body>
+<script>
+    let count=0;
+    let savedCounts = []
+    
+    let increment = document.querySelector('.increment')
+    let save = document.querySelector('.save')
+    let clear = document.querySelector('.clear')
+    let saved = document.getElementById('saved')
+
+    increment.addEventListener('click',function(){
+       count = count + 1
+     countEl.innerHTML = count
+    })
+
+    save.addEventListener('click', function(){
+      /* 
+       saved.innerHTML ="Previous Entries: "+ count +' - '
+       countEl.innerHTML = 0;
+       count = 0;*/
+
+       savedCounts.push(count);
+       saved.innerHTML = "Previous Entries: " + savedCounts.join(' - ');
+       countEl.innerHTML = 0;
+       count = 0;
+    })
+
+    clear.addEventListener('click',function(){
+        savedCounts = []
+        saved.textContent= "Previous Entries: "
+       
+    })
+   
+    
+
+</script>
+</html>
